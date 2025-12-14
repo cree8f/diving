@@ -13,7 +13,7 @@
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             min-height: 100vh;
         }
         
@@ -90,12 +90,12 @@
         select:focus,
         textarea:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+            border-color: #2c3e50;
+            box-shadow: 0 0 5px rgba(44, 62, 80, 0.3);
         }
         
         button {
-            background: #667eea;
+            background: #2c3e50;
             color: white;
             padding: 0.75rem 1.5rem;
             border: none;
@@ -106,7 +106,7 @@
         }
         
         button:hover {
-            background: #5568d3;
+            background: #1a252f;
         }
         
         .btn-danger {
@@ -176,7 +176,7 @@
         }
         
         .stat-box h3 {
-            color: #667eea;
+            color: #2c3e50;
             font-size: 2rem;
         }
         
@@ -195,7 +195,7 @@
 <body>
     {% if current_user.is_authenticated %}
     <nav class="navbar">
-        <h1>🤿 Baz Admin</h1>
+        <h1>🤿 Diving Admin</h1>
         <div class="nav-links">
             <a href="{{ url_for('dashboard') }}">Dashboard</a>
             <a href="{{ url_for('divers') }}">Divers</a>
