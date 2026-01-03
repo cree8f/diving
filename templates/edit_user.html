@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Edit User - Diving Administration{% endblock %}
+
+{% block content %}
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+    <h1 style="color: white;">Edit User: {{ user.username }}</h1>
+    <a href="{{ url_for('users') }}" style="color: white; text-decoration: none;">← Back to Users</a>
+</div>
+
+<div class="card">
+    <h2 style="margin-bottom: 1.5rem;">Edit User Details</h2>
+    <form method="POST">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+                <label for="username">Username *</label>
+                <input type="text" id="username" name="username" value="{{ user.username }}" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" value="{{ user.email }}" required>
+            </div>
+            <div class="form-group">
+                <label for="role">Role</label>
+                <select id="role" name="role">
+                    <option value="user" {% if user.role == 'user' %}selected{% endif %}>User</option>
+                    <option value="instructor" {% if user.role == 'instructor' %}selected{% endif %}>Instructor</option>
+                    <option value="admin" {% if user.role == 'admin' %}selected{% endif %}>Admin</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="password">New Password (leave blank to keep current)</label>
+                <input type="password" id="password" name="password">
+            </div>
+        </div>
+        <button type="submit">Update User</button>
+    </form>
+</div>
+{% endblock %}

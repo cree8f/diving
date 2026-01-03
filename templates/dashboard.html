@@ -18,6 +18,12 @@
         <h3>{{ equipment_count }}</h3>
         <p>Equipment Items</p>
     </div>
+    {% if user_count is not none %}
+    <div class="stat-box">
+        <h3>{{ user_count }}</h3>
+        <p>Total Users</p>
+    </div>
+    {% endif %}
 </div>
 
 <div class="card">

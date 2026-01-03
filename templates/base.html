@@ -203,6 +203,9 @@
             <a href="{{ url_for('certifications') }}">Certifications</a>
             <a href="{{ url_for('dives') }}">Dives</a>
             <a href="{{ url_for('dive_sites') }}">Dive Sites</a>
+            {% if current_user.role == 'admin' %}
+            <a href="{{ url_for('users') }}">Users</a>
+            {% endif %}
             <a href="{{ url_for('logout') }}">Logout ({{ current_user.username }})</a>
         </div>
     </nav>
