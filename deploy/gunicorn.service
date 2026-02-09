@@ -1,19 +1,25 @@
-# Template systemd unit for Gunicorn
-# Copy to /etc/systemd/system/gunicorn.service and edit the placeholders.
-# Replace <USER>, <GROUP>, <APP_DIR>, <GUNICORN_BIN> before enabling.
+# systemd service file for Gunicorn (DivinG_BAZ) on EC2/Linux
+# Installation:
+#   1. Edit paths below if needed
+#   2. Copy to: sudo cp gunicorn.service /etc/systemd/system/
+#   3. Enable: sudo systemctl daemon-reload && sudo systemctl enable gunicorn
+#   4. Start: sudo systemctl start gunicorn
+#   5. Check: sudo systemctl status gunicorn
 
 [Unit]
 Description=gunicorn daemon for DivinG_BAZ
 After=network.target
 
 [Service]
-User=<USER>
-Group=<GROUP>
-WorkingDirectory=<APP_DIR>
-Environment=PATH=<GUNICORN_BIN_PATH>:/usr/bin
+Type=notify
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/DivinG_BAZ
+Environment=PATH=/home/ubuntu/.local/bin:/usr/bin
 Environment=PYTHONUNBUFFERED=1
-ExecStart=<GUNICORN_BIN> --workers 3 --bind 127.0.0.1:8000 app:app
+ExecStart=/home/ubuntu/.local/bin/gunicorn --workers 3 --bind 127.0.0.1:3000 --timeout 90 --access-logfile - --error-logfile - app:app
 Restart=always
+RestartSec=10
 
 [Install]
 WantedBy=multi-user.target
